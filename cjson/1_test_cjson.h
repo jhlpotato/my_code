@@ -3,4 +3,7 @@
 
 int read_json_data_from_file(const char*, char*);
 
+void test_json_1(char*);
+void test_json_2();
+
 #endif
