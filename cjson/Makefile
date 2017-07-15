@@ -2,7 +2,7 @@ cc=gcc
 CFLAGS=-I.
 
 1_test_cjson: 1_test_cjson.c 
-	$(cc) -o 1_test_cjson 1_test_cjson.c cJSON.c $(CFLAGS)
+	$(cc) -o 1_test_cjson 1_test_cjson.c cJSON.c $(CFLAGS) -pthread
 
-test: test.c
-	$(cc) -o test.c cJSON.c $(CFLAGS)
+clean:
+	rm -f 1_test_cjson
