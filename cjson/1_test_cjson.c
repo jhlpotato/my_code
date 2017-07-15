@@ -20,7 +20,7 @@ int read_json_data_from_file(const char* filename, char* json_data) {
 	rewind(fp);
 
 	ret = fread(json_data, 1, filesize, fp);
-	if(NULL == ret) {
+	if(0 == ret) {
 		printf("freed error\n");
 		return -1;
 	}
