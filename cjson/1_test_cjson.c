@@ -37,6 +37,11 @@ int read_json_data_from_file(const char* filename, char* json_data)
 // api5: cJSON_Print()
 void test_json_1(char* json_data)
 {
+
+	printf("######## Test 12 ########\n");
+	cJSON_Minify(json_data);
+	printf("json data = %s\n", json_data);
+
 	// test 01
 	cJSON* root = cJSON_Parse(json_data);
 	cJSON* format = cJSON_GetObjectItemCaseSensitive(root, "format");
