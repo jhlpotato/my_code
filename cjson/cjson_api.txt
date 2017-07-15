@@ -1,0 +1,79 @@
+const char* cJSON_Version(void);
+void        cJSON_InitHooks(cJSON_Hooks* hooks);
+cJSON *     cJSON_Parse(const char *value);
+cJSON *     cJSON_ParseWithOpts(const char *value, const char **return_parse_end, cJSON_bool require_null_terminated);
+char *      cJSON_Print(const cJSON *item);
+char * 		cJSON_PrintUnformatted(const cJSON *item);
+char * 		cJSON_PrintBuffered(const cJSON *item, int prebuffer, cJSON_bool fmt);
+cJSON_bool  cJSON_PrintPreallocated(cJSON *item, char *buffer, const int length, const cJSON_bool format);
+void		cJSON_Delete(cJSON *c);
+int		 	cJSON_GetArraySize(const cJSON *array);
+cJSON * 	cJSON_GetArrayItem(const cJSON *array, int index);
+cJSON * 	cJSON_GetObjectItem(const cJSON * const object, const char * const string);
+cJSON * 	cJSON_GetObjectItemCaseSensitive(const cJSON * const object, const char * const string);
+cJSON_bool 	cJSON_HasObjectItem(const cJSON *object, const char *string);
+const char * 	cJSON_GetErrorPtr(void);
+
+(cJSON_bool) cJSON_IsInvalid(const cJSON * const item);
+(cJSON_bool) cJSON_IsFalse(const cJSON * const item);
+(cJSON_bool) cJSON_IsTrue(const cJSON * const item);
+(cJSON_bool) cJSON_IsBool(const cJSON * const item);
+(cJSON_bool) cJSON_IsNull(const cJSON * const item);
+(cJSON_bool) cJSON_IsNumber(const cJSON * const item);
+(cJSON_bool) cJSON_IsString(const cJSON * const item);
+(cJSON_bool) cJSON_IsArray(const cJSON * const item);
+(cJSON_bool) cJSON_IsObject(const cJSON * const item);
+(cJSON_bool) cJSON_IsRaw(const cJSON * const item);
+(cJSON *) cJSON_CreateNull(void);
+(cJSON *) cJSON_CreateTrue(void);
+(cJSON *) cJSON_CreateFalse(void);
+(cJSON *) cJSON_CreateBool(cJSON_bool boolean);
+(cJSON *) cJSON_CreateNumber(double num);
+(cJSON *) cJSON_CreateString(const char *string);
+(cJSON *) cJSON_CreateRaw(const char *raw);
+(cJSON *) cJSON_CreateArray(void);
+(cJSON *) cJSON_CreateObject(void);
+
+(cJSON *) cJSON_CreateIntArray(const int *numbers, int count);
+(cJSON *) cJSON_CreateFloatArray(const float *numbers, int count);
+(cJSON *) cJSON_CreateDoubleArray(const double *numbers, int count);
+(cJSON *) cJSON_CreateStringArray(const char **strings, int count);
+
+(void) cJSON_AddItemToArray(cJSON *array, cJSON *item);
+(void) cJSON_AddItemToObject(cJSON *object, const char *string, cJSON *item);
+(void) cJSON_AddItemToObjectCS(cJSON *object, const char *string, cJSON *item);
+(void) cJSON_AddItemReferenceToArray(cJSON *array, cJSON *item);
+(void) cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON *item);
+
+(cJSON *) cJSON_DetachItemViaPointer(cJSON *parent, cJSON * const item);
+(cJSON *) cJSON_DetachItemFromArray(cJSON *array, int which);
+(void) cJSON_DeleteItemFromArray(cJSON *array, int which);
+(cJSON *) cJSON_DetachItemFromObject(cJSON *object, const char *string);
+(cJSON *) cJSON_DetachItemFromObjectCaseSensitive(cJSON *object, const char *string);
+(void) cJSON_DeleteItemFromObject(cJSON *object, const char *string);
+(void) cJSON_DeleteItemFromObjectCaseSensitive(cJSON *object, const char *string);
+
+(void) cJSON_InsertItemInArray(cJSON *array, int which, cJSON *newitem); /* Shifts pre-existing items to the right. */
+(cJSON_bool) cJSON_ReplaceItemViaPointer(cJSON * const parent, cJSON * const item, cJSON * replacement);
+(void) cJSON_ReplaceItemInArray(cJSON *array, int which, cJSON *newitem);
+(void) cJSON_ReplaceItemInObject(cJSON *object,const char *string,cJSON *newitem);
+(void) cJSON_ReplaceItemInObjectCaseSensitive(cJSON *object,const char *string,cJSON *newitem);
+ Duplicate a cJSON item */
+(cJSON *) cJSON_Duplicate(const cJSON *item, cJSON_bool recurse);
+(cJSON_bool) cJSON_Compare(const cJSON * const a, const cJSON * const b, const cJSON_bool case_sensitive);
+
+
+void cJSON_Minify(char *json);
+#define cJSON_AddNullToObject(object,name) cJSON_AddItemToObject(object, name, cJSON_CreateNull())
+#define cJSON_AddTrueToObject(object,name) cJSON_AddItemToObject(object, name, cJSON_CreateTrue())
+#define cJSON_AddFalseToObject(object,name) cJSON_AddItemToObject(object, name, cJSON_CreateFalse())
+#define cJSON_AddBoolToObject(object,name,b) cJSON_AddItemToObject(object, name, cJSON_CreateBool(b))
+#define cJSON_AddNumberToObject(object,name,n) cJSON_AddItemToObject(object, name, cJSON_CreateNumber(n))
+#define cJSON_AddStringToObject(object,name,s) cJSON_AddItemToObject(object, name, cJSON_CreateString(s))
+#define cJSON_AddRawToObject(object,name,s) cJSON_AddItemToObject(object, name, cJSON_CreateRaw(s))
+#define cJSON_SetIntValue(object, number) ((object) ? (object)->valueint = (object)->valuedouble = (number) : (number))
+#define cJSON_SetNumberValue(object, number) ((object != NULL) ? cJSON_SetNumberHelper(object, (double)number) : (number))
+#define cJSON_ArrayForEach(element, array) for(element = (array != NULL) ? (array)->child : NULL; element != NULL; element = element->next)
+void * cJSON_malloc(size_t size);
+void cJSON_free(void *object);
+
