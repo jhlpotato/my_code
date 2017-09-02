@@ -9,17 +9,6 @@ struct data
 	struct hlist_node node;
 };
 
-void print_hlist(struct hlist_head head)
-{
-	struct hlist_node node;
-	if(head.first)
-		node = *head.first;
-	do 
-	{
-		
-	}while(node.next);
-}
-
 int main()
 {
 	struct hlist_head head = HLIST_HEAD_INIT;
