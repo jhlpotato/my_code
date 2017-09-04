@@ -54,3 +54,5 @@ dkms.conf
 # execute file
 1_test_cjson
 test
+a.out
+test.png
