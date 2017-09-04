@@ -1,6 +1,6 @@
 ### python 爬虫实践
 
-本文主要是将文章的![链接](https://mp.weixin.qq.com/s/D5Q4Q6YcQDTOOlfwIytFJw)中的代码copy过来的
+本文主要是将文章的[链接](https://mp.weixin.qq.com/s/D5Q4Q6YcQDTOOlfwIytFJw)中的代码copy过来的
 
 当然是自己理解以后的。
 
